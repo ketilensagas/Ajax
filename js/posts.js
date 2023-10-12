@@ -10,7 +10,7 @@ let postMarkup = ''
 let postLength = 0
 
 //Cadastrar um novo post
-fetch('https://jsonplaceholder.typicode.com/posts', {
+fetch('https://jsonplaceholder.typicode.com/posts/', {
     method: 'POST',
     body: JSON.stringify(_data),
     headers: { 'Content-Type': 'application/json; charset=UTF-8' }
@@ -21,7 +21,7 @@ fetch('https://jsonplaceholder.typicode.com/posts', {
 
 //Solicita todos os posts
 function getPosts() {
-    fetch('https://jsonplaceholder.typicode.com/posts', {
+    fetch('https://jsonplaceholder.typicode.com/posts/', {
         headers: {
             'Content-Type': 'application/json; charset=UTF-8'
         }
@@ -35,7 +35,7 @@ function getPosts() {
 }
 //Solicita um post por ID
 function getPost(id) {
-    fetch('https://jsonplaceholder.typicode.com/posts' + id, {
+    fetch('https://jsonplaceholder.typicode.com/posts/' + id, {
         headers: {
             'Content-Type': 'application/json; charset=UTF-8'
         }

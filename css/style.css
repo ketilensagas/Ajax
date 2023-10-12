@@ -63,7 +63,7 @@ input[type="text"] {
 .button:hover {
     opacity: .70;
     border: 1px solid black;
-    background-color: rgb(243, 157, 186)
+    background-color: rgb(146, 109, 121)
 }
 
 .posts-item {
