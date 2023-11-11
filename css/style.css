@@ -16,12 +16,14 @@
 
 }
 
-#main {
-    font-size: 1.7rem;
-    font-weight: bold;
-    padding: 1rem;
-    line-height: 1.7;
-
+#userList { 
+    font-size: 2.5rem;
+    margin: 1rem;
+    padding: 2.5rem;
+    border-radius: 5px;
+    width: 1200px;
+   
+   
 }
 
 #posts {
