@@ -1,33 +1,32 @@
 
-async function getUsers(username) {
-    const userListElement = document.getElementById('userList');
-    const url = `https://api.github.com/search/users?q=${username}+in:login`;
+const url = 'https://api.github.com/users';
+const userList = document.getElementById('userList');
+let text = ''
 
-    try {
-        const response = await fetch(url);
-        const data = await response.json();
+function getUser(user) {
 
-        if (response.ok) {
-            userListElement.innerHTML = '';
-
-            data.items.forEach(user => {
-                const listItem = document.createElement('li');
-                listItem.textContent = user.login;
-                userListElement.appendChild(listItem);
-            });
-        } else {
-            throw new Error('Erro ao buscar usernames');
+    fetch(`${url}/${user}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json; charset=UTF-8'
         }
-    } catch (error) {
-        console.error('Ocorreu um erro:', error);
-    }
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            text += `<p>${data.name}<br> Possui ${data.public_repos} repositórios públicos no GitHub como ${data.login}</p>`
+            userList.innerHTML = text
+        })
+        .catch((error) => console.error('Erro: ', error.message || error))
+
 }
 
 document.getElementById('searchInput').addEventListener('keypress', async function (e) {
     if (e.key === 'Enter') {
         const username = e.target.value.trim();
         if (username !== '') {
-            getUsers(username);
+            getUser(username);
         }
     }
 });
+
+
